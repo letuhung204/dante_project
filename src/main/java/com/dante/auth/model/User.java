@@ -9,16 +9,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private String username;
-
+    @Column
     private String password;
 
     @Transient
     private String passwordConfirm;
-
-    @ManyToMany
-    private Set<Role> roles;
 
     public Long getId() {
         return id;
@@ -52,11 +49,4 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 }
