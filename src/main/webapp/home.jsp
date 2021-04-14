@@ -196,7 +196,7 @@
                     <div class="c-split__content content">
                         <h2 id="celebrate" class="h2 c-split__heading">Celebrate</h2>
                         <p>Schedule your next event at Caffe Dante.</p>
-                        <a href="/celebrate" class="btn btn-brand">Inquire Within</a>
+                        <a href="#" class="btn btn-brand">Inquire Within</a>
                     </div>
                 </div>
             </div>
@@ -215,7 +215,7 @@
                         <h2 class="h2 c-split__heading">Shop</h2>
                         <section id=”target-element”>Target Element Content</section>
                         <p>Purchase our merchandise online. </p>
-                        <a href="/store" class="btn btn-brand">View Products</a>
+                        <a href="#" class="btn btn-brand">View Products</a>
                     </div>
                 </div>
             </div>
@@ -225,7 +225,7 @@
             <div class="container">
                 <h2 class="h1">Food & Drink</h2>
                 <p>Click below to see what we&#39;re serving. </p>
-                <a href="/menus" class="btn btn-brand">View Menus</a>
+                <a href="#" class="btn btn-brand">View Menus</a>
             </div>
         </section>
     </main>

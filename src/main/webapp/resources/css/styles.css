@@ -10440,7 +10440,7 @@ a {
         width: 100%;
    }
     .c-split__col:not(.c-split__col--empty) {
-        width: 66%;
+        width: 50%;
    }
     .c-split__col.c-split__col--empty {
         width: 33%;

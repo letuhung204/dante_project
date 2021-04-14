@@ -1,64 +1,52 @@
 package com.dante.auth.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name="menu")
-public class Menu {
+@Table(name = "user")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column
-    private String title;
-    @Column
-    private String description;
-    @Column
-    private String photos;
-    @Column(nullable = true)
-    private String category;
+    private String username;
 
-    public Menu() {
-    }
+    private String password;
 
-    public Integer getId() {
+    @Transient
+    private String passwordConfirm;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getUsername() {
+        return username;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @Transient
-    public String getPhotos() {
-        return photos;
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 
-    public void setPhotos(String photos) {
-        this.photos = photos;
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 }
