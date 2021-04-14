@@ -244,9 +244,9 @@
             <ul class="sidebar-menu">
                 <li class="header">Menu Management</li>
                 <!-- Optionally, you can add icons to the links -->
-<%--                <li class="active"><a href="/menu/list"><i--%>
-<%--                        class="glyphicon glyphicon-lock"></i> <span>Account--%>
-<%--								Management</span></a></li>--%>
+                <li class="active"><a href="/catalogue"><i
+                        class="glyphicon glyphicon-lock"></i> <span>Category
+								Management</span></a></li>
                 <li class="active"><a class="" href="/menu/list"><i
                         class="glyphicon glyphicon-home"></i> <span>Menu
 								Management</span></a></li>

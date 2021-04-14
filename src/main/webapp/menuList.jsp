@@ -262,6 +262,9 @@
 <%--                <li class="active"><a href="/menu/list"><i--%>
 <%--                        class="glyphicon glyphicon-lock"></i> <span>Account--%>
 <%--								Management</span></a></li>--%>
+                <li class="active"><a href="/catalogue"><i
+                        class="glyphicon glyphicon-lock"></i> <span>Category
+								Management</span></a></li>
                 <li class="active"><a class="" href="/menu/list"><i
                         class="glyphicon glyphicon-home"></i> <span>Menu
 								Management</span></a></li>

@@ -1,6 +1,7 @@
 package com.dante.auth.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="menu")
@@ -17,6 +18,27 @@ public class Menu {
     private String photos;
     @Column(nullable = true)
     private String category;
+
+    @Transient
+    private List<Catalogue> catalogueList;
+    @Transient
+    private Integer idCatalogue;
+
+    public Integer getIdCatalogue() {
+        return idCatalogue;
+    }
+
+    public void setIdCatalogue(Integer idCatalogue) {
+        this.idCatalogue = idCatalogue;
+    }
+
+    public List<Catalogue> getCatalogueList() {
+        return catalogueList;
+    }
+
+    public void setCatalogueList(List<Catalogue> catalogueList) {
+        this.catalogueList = catalogueList;
+    }
 
     public Menu() {
     }

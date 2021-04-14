@@ -243,9 +243,9 @@
             <ul class="sidebar-menu">
                 <li class="header">Menu Management</li>
                 <!-- Optionally, you can add icons to the links -->
-<%--                <li class="active"><a href="/menu/list"><i--%>
-<%--                        class="glyphicon glyphicon-lock"></i> <span>Account--%>
-<%--								Management</span></a></li>--%>
+                <%--                <li class="active"><a href="/menu/list"><i--%>
+                <%--                        class="glyphicon glyphicon-lock"></i> <span>Account--%>
+                <%--								Management</span></a></li>--%>
                 <li class="active"><a href="/catalogue"><i
                         class="glyphicon glyphicon-lock"></i> <span>Category
 								Management</span></a></li>
@@ -286,23 +286,23 @@
                     <tr>
                         <td colspan="1"><img alt="this is logo"
                                              src="https://foody364.files.wordpress.com/2016/10/wallpaper-food-drink-cocktail-cake-pasta-pizza-awesome-85.jpg?w=1200" style="width: 30%;margin-left: 30%; display: block;">
-                            <h2>Item Menu </h2> <spring:url value="/save/menu"
-                                                              var="saveURL" />
+                            <h2>Item Category </h2> <spring:url value="/save/catalogue"
+                                                            var="saveURL" />
                             <fieldset>
-                                <form:form modelAttribute="menu" method="POST" onsubmit="return validateImage()"
-                                           action="${saveURL}" cssClass="well form-horizontal" enctype="multipart/form-data">
+                                <form:form modelAttribute="catalogue" method="POST"
+                                           action="${saveURL}" cssClass="well form-horizontal" >
 
                                     <div class="form-group" style="display: none">
                                         <label class="control-label col-sm-2 requiredField">
                                             ID  <span class="asteriskField"> * </span>
                                         </label>
                                         <c:choose>
-                                            <c:when test="${not empty menu.id }">
+                                            <c:when test="${not empty catalogue.idCatalogue }">
                                                 <div class="col-md-8 inputGroupContainer">
                                                     <div class="input-group">
 																<span class="input-group-addon"><i
                                                                         class="glyphicon glyphicon-user"></i></span>
-                                                        <form:input path="id" cssClass="form-control"
+                                                        <form:input path="idCatalogue" cssClass="form-control"
                                                                     required="required" readonly="true" />
                                                     </div>
                                                 </div>
@@ -312,7 +312,7 @@
                                                     <div class="input-group">
 																<span class="input-group-addon"><i
                                                                         class="glyphicon glyphicon-user"></i></span>
-                                                        <form:input id="id" path="id"
+                                                        <form:input id="id" path="idCatalogue"
                                                                     cssClass="form-control" readonly="true" />
                                                     </div>
                                                 </div>
@@ -320,90 +320,38 @@
                                         </c:choose>
                                     </div>
 
-                                    <c:choose>
-                                    <c:when test="${not empty menu.title }">
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-2 requiredField">
-                                                Tên Món <span class="asteriskField"> *</span>
-                                            </label>
-                                            <div class="col-md-8 inputGroupContainer">
-                                                <div class="input-group">
-                                                            <span class="input-group-addon"><i
-                                                                    class="glyphicon glyphicon-list-alt"></i></span>
-                                                    <form:input path="title" id="title"
-                                                                placeholder="title" class="form-control"
-                                                                required="true" type="text"></form:input>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </c:when>
-                                        <c:otherwise>
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-2 requiredField">
-                                                    Tên Món <span class="asteriskField"> *</span>
-                                                </label>
-                                                <div class="col-md-8 inputGroupContainer">
-                                                    <div class="input-group">
-                                                            <span class="input-group-addon"><i
-                                                                    class="glyphicon glyphicon-list-alt"></i></span>
-                                                        <form:input path="title" id="title"
-                                                                    placeholder="title" class="form-control"
-                                                                    required="true" type="text" require="true"></form:input>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </c:otherwise>
-                                    </c:choose>
-
                                     <div class="form-group">
                                         <label class="control-label col-sm-2 requiredField">
-                                            Category <span class="asteriskField"> *</span>
+                                            Tên Category <span class="asteriskField"> *</span>
                                         </label>
                                         <div class="col-md-8 inputGroupContainer">
                                             <div class="input-group">
                                                     <span class="input-group-addon"><i
                                                             class="glyphicon glyphicon-list-alt"></i></span>
-                                                <form:select path="idCatalogue" class="form-control"
-                                                             id="sel1" style="height:30px" required="required">
-                                                    <form:option value="" label="--- Select ---" />
-                                                    <c:forEach items="${menu.catalogueList}" var="catalogue" varStatus="s">
-                                                        <form:option value="${catalogue.idCatalogue}" label="${catalogue.ten}" />
-                                                    </c:forEach>
-
-                                                </form:select>
+                                                <form:input path="ten" id="ten"
+                                                            placeholder="nhập tên catagory" class="form-control"
+                                                            required="true" type="text" require="true"></form:input>
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="form-group">
                                         <label class="control-label col-sm-2 requiredField">
-                                            Mô tả món ăn <span class="asteriskField"> *</span>
+                                            Mô tả Catelogy <span class="asteriskField"> *</span>
                                         </label>
                                         <div class="col-md-8 inputGroupContainer">
                                             <div class="input-group">
 														<span class="input-group-addon"><i
                                                                 class="glyphicon glyphicon-list-alt"></i></span>
-                                                <form:textarea path="description"
-                                                            placeholder="nhập mô tả" class="form-control" rows="6"
-                                                            required="true" type="text" require="true"></form:textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2 requiredField">
-                                            Photo <span class="asteriskField"> *</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <form:input path="photos" type="file" class="custom-file-input" id="imageFile" require="true" cssStyle="margin-left: 16px"/>
+                                                <form:textarea path="chitiet"
+                                                               placeholder="nhập mô tả catalogue" class="form-control" rows="3"
+                                                               required="true" type="text" require="true"></form:textarea>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary">Save</button>
-                                        <a type="button" class="btn btn-primary" href="/menu/list"
+                                        <a type="button" class="btn btn-primary" href="/catalogue"
                                            onclick="return confirm('Bạn chắc chắn muốn ngừng thực hiện tác vụ không ?')">Cancel</a>
                                     </div>
 
@@ -484,17 +432,6 @@
 
 </script>
 <!-- REQUIRED JS SCRIPTS -->
-<script>
-    function validateImage() {
-        var image = document.getElementById("imageFile");
-        if (image.files.length == 0){
-            alert("Bạn chưa chọn ảnh cho item !");
-            return false;
-        }else{
-            return true;
-        }
-    }
-</script>
 <!-- jQuery 2.2.0 -->
 <script src="${contextPath}/resources/plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

@@ -1,13 +1,16 @@
 package com.dante.auth.web;
 
+import com.dante.auth.model.CatagoryMenu;
+import com.dante.auth.model.Catalogue;
 import com.dante.auth.model.Menu;
 import com.dante.auth.model.User;
+import com.dante.auth.repository.CategoryMenuRepo;
+import com.dante.auth.repository.CategoryRepo;
 import com.dante.auth.repository.MenuRepository;
 import com.dante.auth.service.SecurityService;
 import com.dante.auth.service.UserService;
 import com.dante.auth.validator.PhotoUploadUtil;
 import com.dante.auth.validator.UserValidator;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
@@ -40,6 +43,12 @@ public class UserController {
 
     @Autowired
     private MenuRepository menuRepo;
+    @Autowired
+    private CategoryRepo categoryRepo;
+
+    @Autowired
+    private CategoryMenuRepo categoryMenuRepo;
+
     public static String uploadDirectory = System.getProperty("user.dir") + "/user-photos";
 
     @GetMapping("/registration")
@@ -99,21 +108,28 @@ public class UserController {
 
     @PostMapping("/save/menu")
     public RedirectView saveMenu(@RequestParam("photos") MultipartFile multipartFile, @RequestParam("title") String title,@RequestParam(value = "id",required = false) Integer id,
-                                 @RequestParam("description") String description, @RequestParam("category") String category) throws IOException {
+                                 @RequestParam("description") String description, @RequestParam("idCatalogue") int catelogueId) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         Menu menu ;
+        CatagoryMenu catagoryMenu;
         if(id == null){
+            catagoryMenu = new CatagoryMenu();
             menu = new Menu();
+            List<Menu> menuList = menuRepo.findAll();
+            if(menuList != null){
+                catagoryMenu.setIdMenu(menuList.size() + 1);
+            }
         }else{
             menu = menuRepo.getOne(id);
+            catagoryMenu = categoryMenuRepo.itemCategory(id);
         }
 
-        menu.setCategory(category);
         menu.setTitle(title);
         menu.setDescription(description);
         menu.setPhotos(fileName);
-
+        catagoryMenu.setIdCatagory(catelogueId);
         Menu menuSave = menuRepo.save(menu);
+        categoryMenuRepo.save(catagoryMenu);
 
         String uploadDir = "user-photos/";
 
@@ -124,7 +140,13 @@ public class UserController {
 
     @GetMapping("/save")
     public String callFormMenu(Model model) {
-        model.addAttribute("menu", new Menu());
+        Menu menu = new Menu();
+        List<Catalogue> catalogueList = categoryRepo.findAll();
+        for (Catalogue catalogue:catalogueList) {
+            menu.setIdCatalogue(catalogue.getIdCatalogue());
+        }
+        menu.setCatalogueList(catalogueList);
+        model.addAttribute("menu", menu);
         return "menuForm";
     }
 
@@ -135,6 +157,14 @@ public class UserController {
         for (Menu menu:listMenu) {
             String[] mota = menu.getDescription().split("\\r?\\n");
             model.addAttribute("mota", mota);
+
+            CatagoryMenu catagoryMenu = categoryMenuRepo.itemCategory(menu.getId());
+            if(catagoryMenu != null){
+                Catalogue catalogue = categoryRepo.getOne(catagoryMenu.getIdCatagory());
+                if(catalogue != null){
+                    menu.setCategory(catalogue.getTen());
+                }
+            }
         }
         model.addAttribute("listMenu", listMenu);
         return "menuList";
@@ -170,6 +200,11 @@ public class UserController {
         Menu menu = menuRepo.getOne(id);
 
         if(menu != null){
+            List<Catalogue> catalogueList = categoryRepo.findAll();
+            for (Catalogue catalogue:catalogueList) {
+                menu.setIdCatalogue(catalogue.getIdCatalogue());
+            }
+            menu.setCatalogueList(catalogueList);
             model.addAttribute("menu",menu);
         }
         return "menuForm";
