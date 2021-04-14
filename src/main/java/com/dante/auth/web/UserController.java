@@ -79,12 +79,12 @@ public class UserController {
         return "welcome";
     }
 
-    @GetMapping({"/admin"})
+    @GetMapping({"/admin","/home"})
     public String admin(Model model) {
         return "admin";
     }
 
-    @GetMapping({"/home", "/"})
+    @GetMapping({ "/"})
     public String home(Model model) {
         model.addAttribute("listmenu",menuRepo.findAll());
         return "home";
