@@ -124,7 +124,7 @@
                 </div>
             </div>
         </section>
-        <c:forEach items="${listmenu}" var="menu" varStatus="s">
+        <c:forEach items="${listMenu}" var="menu" varStatus="s">
         <section class="c-split c-split--vcenter revealable">
             <div class="c-split__col c-split__col--empty">
                 <div class="c-split__col-inner">
@@ -137,8 +137,16 @@
                 <div class="c-split__col-inner">
                     <div class="c-split__content content">
                         <h2 id="bookmenu" class="h2 c-split__heading"><c:out value="${menu.title}" /></h2>
-                        <p><c:out value="${menu.description}" /></p>
-
+                        <c:choose>
+                            <c:when test="${not empty mota }">
+                                <c:forEach items="${mota}" var="valueMota" >
+                                    <c:out value="${valueMota}" /><br>
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <p><c:out value="${menu.description}" /></p>
+                            </c:otherwise>
+                        </c:choose>
                         <button type="button" class="btn btn-brand popup-with-zoom-anim" data-popup="inline"
                                 href="#popup-reservations-form" data-bb-track="button"
                                 data-bb-track-on="click" data-bb-track-category="Reservations Trigger Button"

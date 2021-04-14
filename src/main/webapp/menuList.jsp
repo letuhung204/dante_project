@@ -39,9 +39,7 @@
             integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
             crossorigin="anonymous" />
     <!-- Custom style -->
-    <link href="${contextPath}/static/css/style.css"
-          rel="stylesheet" />
-    <script src="${contextPath}/js/checkValidate.js"></script>
+    <link  rel="stylesheet" href="../static/css/style.css"/>
     <style type="text/css">
         .asteriskField {
             color: red;
@@ -323,12 +321,35 @@
                                     <tr>
                                         <td><c:out value="${s.index + 1}" /></td>
                                         <td><c:out value="${menu.title}" /></td>
-                                        <td><c:out value="${menu.description}" /></td>
+
+                                        <c:choose>
+                                            <c:when test="${not empty mota }">
+                                                <td>
+                                                <c:forEach items="${mota}" var="valueMota" varStatus="s">
+                                                    <c:out value="${valueMota}" /><br>
+                                                </c:forEach>
+                                                </td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td><c:out value="${menu.description}" /></td>
+                                            </c:otherwise>
+                                        </c:choose>
                                         <td><img src="/user-photos/${menu.photos}" class="img-circle" alt="User Image" width="150px" height="100px"></td>
                                         <td><c:out value="${menu.category}"></c:out> </td>
-                                        <td><spring:url value="/menu/delete/${menu.id}" var="deleteURL" /> <a href="${deleteURL}"
+
+                                        <td>
+                                            <div style="margin-left: 5px;width: 40%;float: left;">
+                                                <spring:url
+                                                        value="/menu/${menu.id}/edit" var="editURL" />
+                                                <a href="${editURL}" style="font-size: 25px;"><i
+                                                        class="glyphicon glyphicon-pencil"></i></a>
+                                            </div>
+                                            <div style="width: 40%;float: left">
+                                            <spring:url value="/menu/delete/${menu.id}" var="deleteURL" /> <a href="${deleteURL}" style="font-size: 25px;"
                                                                       onclick="return confirm('Bạn chắc chắn xoá menu có tên : ${menu.title} ?');"><i
-                                                class="glyphicon glyphicon-trash"></i> </a></td>
+                                                class="glyphicon glyphicon-trash"></i> </a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

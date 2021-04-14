@@ -23,7 +23,7 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="resources/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="${contextPath}/resources/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
             page. However, you can choose any other skin. Make sure you
             apply the skin class to the body tag so the changes take effect.
@@ -31,7 +31,7 @@
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
     <link rel="stylesheet" href="${contextPath}/resources/dist/css/skins/skin-blue.min.css">
-    <link href="../static/images/logo.png" href="@{/images/logo.png}"
+    <link href="${contextPath}/static/images/logo.png" href="@{/images/logo.png}"
           rel="shortcut icon" />
     <link
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -39,9 +39,8 @@
             integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
             crossorigin="anonymous" />
     <!-- Custom style -->
-    <link href="../static/css/style.css" href="@{/css/style.css}"
+    <link href="${contextPath}/static/css/style.css" href="@{/css/style.css}"
           rel="stylesheet" />
-    <script src="/js/checkValidate.js"></script>
     <style type="text/css">
         .asteriskField {
             color: red;
@@ -284,40 +283,110 @@
                     <tr>
                         <td colspan="1"><img alt="this is logo"
                                              src="https://foody364.files.wordpress.com/2016/10/wallpaper-food-drink-cocktail-cake-pasta-pizza-awesome-85.jpg?w=1200" style="width: 30%;margin-left: 30%; display: block;">
-                            <h2>Thêm Item Cho Menu </h2> <spring:url value="/save/menu"
+                            <h2>Item Menu </h2> <spring:url value="/save/menu"
                                                               var="saveURL" />
                             <fieldset>
-                                <form:form modelAttribute="menu" method="POST"
+                                <form:form modelAttribute="menu" method="POST" onsubmit="return validateImage()"
                                            action="${saveURL}" cssClass="well form-horizontal" enctype="multipart/form-data">
 
-                                    <div class="form-group">
+                                    <div class="form-group" style="display: none">
                                         <label class="control-label col-sm-2 requiredField">
-                                            Tên Món <span class="asteriskField"> *</span>
+                                            ID  <span class="asteriskField"> * </span>
                                         </label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-														<span class="input-group-addon"><i
-                                                                class="glyphicon glyphicon-list-alt"></i></span>
-                                                <form:input path="title" id="title"
-                                                            placeholder="title" class="form-control"
-                                                            required="true" type="text"></form:input>
+                                        <c:choose>
+                                            <c:when test="${not empty menu.id }">
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group">
+																<span class="input-group-addon"><i
+                                                                        class="glyphicon glyphicon-user"></i></span>
+                                                        <form:input path="id" cssClass="form-control"
+                                                                    required="required" readonly="true" />
+                                                    </div>
+                                                </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group">
+																<span class="input-group-addon"><i
+                                                                        class="glyphicon glyphicon-user"></i></span>
+                                                        <form:input id="id" path="id"
+                                                                    cssClass="form-control" readonly="true" />
+                                                    </div>
+                                                </div>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+
+                                    <c:choose>
+                                    <c:when test="${not empty menu.title }">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2 requiredField">
+                                                Tên Món <span class="asteriskField"> *</span>
+                                            </label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-list-alt"></i></span>
+                                                    <form:input path="title" id="title"
+                                                                placeholder="title" class="form-control"
+                                                                required="true" type="text"></form:input>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2 requiredField">
-                                            Category <span class="asteriskField"> *</span>
-                                        </label>
-                                        <div class="col-md-8 inputGroupContainer">
-                                            <div class="input-group">
-														<span class="input-group-addon"><i
-                                                                class="glyphicon glyphicon-list-alt"></i></span>
-                                                <form:input path="category"
-                                                            placeholder="nhập category" class="form-control"
-                                                            required="true" type="text"></form:input>
+                                    </c:when>
+                                        <c:otherwise>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2 requiredField">
+                                                    Tên Món <span class="asteriskField"> *</span>
+                                                </label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-list-alt"></i></span>
+                                                        <form:input path="title" id="title"
+                                                                    placeholder="title" class="form-control"
+                                                                    required="true" type="text" require="true"></form:input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <c:choose>
+                                    <c:when test="${not empty menu.category }">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2 requiredField">
+                                                Category <span class="asteriskField"> *</span>
+                                            </label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-list-alt"></i></span>
+                                                    <form:input path="category"
+                                                                placeholder="nhập category" class="form-control"
+                                                                required="true" type="text"></form:input>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </c:when>
+                                        <c:otherwise>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2 requiredField">
+                                                    Category <span class="asteriskField"> *</span>
+                                                </label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-list-alt"></i></span>
+                                                        <form:input path="category"
+                                                                    placeholder="nhập category" class="form-control"
+                                                                    required="true" type="text" require="true"></form:input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                     <div class="form-group">
                                         <label class="control-label col-sm-2 requiredField">
                                             Mô tả món ăn <span class="asteriskField"> *</span>
@@ -328,7 +397,7 @@
                                                                 class="glyphicon glyphicon-list-alt"></i></span>
                                                 <form:textarea path="description"
                                                             placeholder="nhập mô tả" class="form-control" rows="6"
-                                                            required="true" type="text"></form:textarea>
+                                                            required="true" type="text" require="true"></form:textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -338,7 +407,7 @@
                                         </label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <form:input path="photos" type="file" class="custom-file-input" id="imageFile" />
+                                                <form:input path="photos" type="file" class="custom-file-input" id="imageFile" require="true" />
                                             </div>
                                         </div>
                                     </div>
@@ -386,33 +455,10 @@
             <!-- Home tab content -->
             <div class="tab-pane active" id="control-sidebar-home-tab">
                 <h3 class="control-sidebar-heading">Recent Activity</h3>
-                <ul class="control-sidebar-menu">
-                    <li><a href="javascript::;"> <i
-                            class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                        <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                            <p>Will be 23 on April 24th</p>
-                        </div>
-                    </a></li>
-                </ul>
                 <!-- /.control-sidebar-menu -->
 
                 <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                <ul class="control-sidebar-menu">
-                    <li><a href="javascript::;">
-                        <h4 class="control-sidebar-subheading">
-                            Custom Template Design <span
-                                class="label label-danger pull-right">70%</span>
-                        </h4>
 
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-danger"
-                                 style="width: 70%"></div>
-                        </div>
-                    </a></li>
-                </ul>
                 <!-- /.control-sidebar-menu -->
 
             </div>
@@ -445,9 +491,21 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+<script>
 
+</script>
 <!-- REQUIRED JS SCRIPTS -->
-
+<script>
+    function validateImage() {
+        var image = document.getElementById("imageFile");
+        if (image.files.length == 0){
+            alert("Bạn chưa chọn ảnh cho item !");
+            return false;
+        }else{
+            return true;
+        }
+    }
+</script>
 <!-- jQuery 2.2.0 -->
 <script src="${contextPath}/resources/plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -456,9 +514,5 @@
 <script src="${contextPath}/resources/dist/js/app.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
- Both of these plugins are recommended to enhance the
- user experience. Slimscroll is required when using the
- fixed layout. -->
 </body>
 </html>

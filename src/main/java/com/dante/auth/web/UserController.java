@@ -7,6 +7,7 @@ import com.dante.auth.service.SecurityService;
 import com.dante.auth.service.UserService;
 import com.dante.auth.validator.PhotoUploadUtil;
 import com.dante.auth.validator.UserValidator;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
@@ -86,15 +87,27 @@ public class UserController {
 
     @GetMapping({ "/"})
     public String home(Model model) {
-        model.addAttribute("listmenu",menuRepo.findAll());
+        List<Menu> listMenu = new ArrayList<>();
+        listMenu = menuRepo.findAll();
+        for (Menu menu:listMenu) {
+            String[] mota = menu.getDescription().split("\\r?\\n");
+            model.addAttribute("mota", mota);
+        }
+        model.addAttribute("listMenu", listMenu);
         return "home";
     }
 
     @PostMapping("/save/menu")
-    public RedirectView saveMenu(@RequestParam("photos") MultipartFile multipartFile, @RequestParam("title") String title,
+    public RedirectView saveMenu(@RequestParam("photos") MultipartFile multipartFile, @RequestParam("title") String title,@RequestParam(value = "id",required = false) Integer id,
                                  @RequestParam("description") String description, @RequestParam("category") String category) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        Menu menu = new Menu();
+        Menu menu ;
+        if(id == null){
+            menu = new Menu();
+        }else{
+            menu = menuRepo.getOne(id);
+        }
+
         menu.setCategory(category);
         menu.setTitle(title);
         menu.setDescription(description);
@@ -119,6 +132,10 @@ public class UserController {
     public String listAllMenu(Model model) {
         List<Menu> listMenu = new ArrayList<>();
         listMenu = menuRepo.findAll();
+        for (Menu menu:listMenu) {
+            String[] mota = menu.getDescription().split("\\r?\\n");
+            model.addAttribute("mota", mota);
+        }
         model.addAttribute("listMenu", listMenu);
         return "menuList";
     }
@@ -146,5 +163,15 @@ public class UserController {
             menuRepo.deleteById(menuId);
         }
         return new RedirectView("/menu/list", true);
+    }
+
+    @GetMapping(value = "/menu/{id}/edit")
+    public String edit(@PathVariable("id") int id, Model model){
+        Menu menu = menuRepo.getOne(id);
+
+        if(menu != null){
+            model.addAttribute("menu",menu);
+        }
+        return "menuForm";
     }
 }
