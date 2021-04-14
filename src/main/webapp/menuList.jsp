@@ -316,6 +316,7 @@
                                     <th>Nội Dung mô Tả</th>
                                     <th>Anh Minh Họa</th>
                                     <th>Category</th>
+                                    <th>Giá item</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -339,7 +340,7 @@
                                         </c:choose>
                                         <td><img src="/user-photos/${menu.photos}" class="img-circle" alt="User Image" width="150px" height="100px"></td>
                                         <td><c:out value="${menu.category}"></c:out> </td>
-
+                                        <td><c:out value="${menu.price}"></c:out> </td>
                                         <td>
                                             <div style="margin-left: 5px;width: 40%;float: left;">
                                                 <spring:url

@@ -1,4 +1,27 @@
+@font-face {
+    font-family: "Resamitz";
+    src: url("../fonts/Resamitz.otf") format("opentype");
+}
+@font-face {
+    font-family: "Catorze 27 Medium";
+    src: url("../fonts/Catorze27Medium.otf") format("opentype");
+}   
+@font-face {
+    font-family: "Catorze 27 Black";
+    src: url("../fonts/Catorze27Style1-Black.otf") format("opentype");
+}
 
+.scroll-top {
+    width: 30px;
+    position: fixed;
+    bottom: 70px;
+    right: 50px;
+    cursor: pointer;
+    z-index: 9999;
+}
+.scroll-top i{
+    font-size: 2rem;
+}
 a:focus, button:focus, .btn:focus, .btn.active:focus, .arrow-btn:focus, .site-nav-submenu:focus, .nav-toggle-btn:focus, .form-control:focus, .mapboxgl-ctrl-geocoder--input:focus {
     outline: auto 3px Highlight;
     outline: auto 6px -webkit-focus-ring-color;
@@ -8652,14 +8675,26 @@ select {
 }
 .c-split__image {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 20px;
+    left: 20px;
     z-index: -2;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
+}
+
+.category-label {
+    font-size: 1.5rem;
+    padding: 0px 500px 0px 50px;
+}
+.category-label:after {
+    display: block;
+    content: "";
+    width: 500px;
+    height: 2px;
+    background: linear-gradient(to left, #000000 , white);
 }
 .c-split--vcenter .c-split__col {
     display: -webkit-box;
@@ -8671,7 +8706,7 @@ select {
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    vertical-align: middle;
+    vertical-align: top;
 }
 @media (min-width: 769px) {
     .c-split {
@@ -10163,7 +10198,7 @@ main {
     transform: rotate(-25deg);
 }
 .c-split__col:not(.c-split__col--empty), .popup--modal {
-    border-image: url(/imgs/19081ivory-borders.png) 70 70 round;
+    border-image: url('../imgs/19081ivory-borders.png') 70 70 round;
     border-width: 30px;
     border-style: solid;
 }
@@ -10440,10 +10475,11 @@ a {
         width: 100%;
    }
     .c-split__col:not(.c-split__col--empty) {
-        width: 50%;
+        width: 66%;
    }
     .c-split__col.c-split__col--empty {
-        width: 33%;
+        width: 550px;
+        height: 550px;
    }
     .c-split--alternate .c-split__col:first-child {
         left: 60%;

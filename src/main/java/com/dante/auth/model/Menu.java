@@ -18,6 +18,16 @@ public class Menu {
     private String photos;
     @Column(nullable = true)
     private String category;
+    @Column
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     @Transient
     private List<Catalogue> catalogueList;

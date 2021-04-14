@@ -375,6 +375,21 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2 requiredField">
+                                            Giá Món
+                                        </label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-list-alt"></i></span>
+                                                <form:input path="price" id="price"
+                                                            placeholder="nhập giá món dạng số" class="form-control"
+                                                            required="true" type="text"></form:input>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-2 requiredField">

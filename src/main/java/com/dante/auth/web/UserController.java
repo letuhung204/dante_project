@@ -102,13 +102,14 @@ public class UserController {
             String[] mota = menu.getDescription().split("\\r?\\n");
             model.addAttribute("mota", mota);
         }
+        model.addAttribute("listCatalogues",categoryRepo.findAll());
         model.addAttribute("listMenu", listMenu);
         return "home";
     }
 
     @PostMapping("/save/menu")
     public RedirectView saveMenu(@RequestParam("photos") MultipartFile multipartFile, @RequestParam("title") String title,@RequestParam(value = "id",required = false) Integer id,
-                                 @RequestParam("description") String description, @RequestParam("idCatalogue") int catelogueId) throws IOException {
+                                 @RequestParam("description") String description, @RequestParam("idCatalogue") int catelogueId,@RequestParam(value = "price",required = false) int price) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         Menu menu ;
         CatagoryMenu catagoryMenu;
@@ -127,6 +128,8 @@ public class UserController {
         menu.setTitle(title);
         menu.setDescription(description);
         menu.setPhotos(fileName);
+        menu.setPrice(price);
+
         catagoryMenu.setIdCatagory(catelogueId);
         Menu menuSave = menuRepo.save(menu);
         categoryMenuRepo.save(catagoryMenu);

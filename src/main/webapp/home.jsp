@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -19,22 +18,14 @@
     <script src="${contextPath}/resources/js/lazyload.min.js"></script>
     <script src="${contextPath}/resources/js/jquery.magnific-popup.js"></script>
     <script src="${contextPath}/resources/js/script.js"></script>
-    <style>
-        @font-face {
-            font-family: "Resamitz";
-            src: url("${contextPath}/resources/fonts/Resamitz.otf") format("opentype");
-        }
-        @font-face {
-            font-family: "Catorze 27 Medium";
-            src: url("${contextPath}/resources/fonts/Catorze27Medium.otf") format("opentype");
-        }
-        @font-face {
-            font-family: "Catorze 27 Black";
-            src: url("${contextPath}/resources/fonts/Catorze27Style1-Black.otf") format("opentype");
-        }
-    </style>
+    <link rel="stylesheet" href="${contextPath}/resources/css/fontawesome.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/brands.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/solid.css">
 </head>
 <body class="has-hero-intent index-template">
+<div href="#top-nav" class="scroll-top scroll_to">
+    <i class="fas fa-arrow-up"></i>
+</div>
 <header class="site-header">
     <a href="#main-content" class="skip">Skip to main content</a>
     <div class="site-header-desktop">
@@ -50,7 +41,7 @@
                              alt="dante sticky logo" />
                     </a>
                 </div>
-                <nav class="site-nav">
+                <nav class="site-nav" id="top-nav">
                     <ul class="site-nav-menu" data-menu-type="desktop">
                         <li>
                             <a class="site-nav-link " href="#">Welcome</a>
@@ -115,47 +106,53 @@
         <section class="c-two-col--text content container revealable catalogue">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Catalogue</h2>
+                    <h2>Category</h2>
                     <div class="catalogue-menu">
-                        <a href="#bookmenu" class="scroll_to">Book a menu</a>
-                        <a href="#celebrate" class="scroll_to">Celebrate</a>
-                        <a href="#target-element" class="scroll_to">Scroll to Target Element</a>
+                        <c:forEach items="${listCatalogues}" var="catalogue" varStatus="s">
+                            <a href="#" class="scroll_to"><c:out value="${catalogue.ten}" /></a>
+
+                        </c:forEach>
+
                     </div>
                 </div>
             </div>
         </section>
+        <label id="bookmenu" class="category-label">Book a table</label>
+
         <c:forEach items="${listMenu}" var="menu" varStatus="s">
-        <section class="c-split c-split--vcenter revealable">
-            <div class="c-split__col c-split__col--empty">
-                <div class="c-split__col-inner">
-                    <div class="c-split__image" role="img" aria-label="Dante Negroni over Menu"
-                         style="background-image: url('/user-photos/${menu.photos}');">
+            <section class="c-split c-split--vcenter revealable">
+                <div class="c-split__col c-split__col--empty">
+                    <div class="c-split__col-inner">
+                        <div class="c-split__image" role="img" aria-label="Dante Negroni over Menu"
+                             style="background-image: url('/user-photos/${menu.photos}');">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="c-split__col ">
-                <div class="c-split__col-inner">
-                    <div class="c-split__content content">
-                        <h2 id="bookmenu" class="h2 c-split__heading"><c:out value="${menu.title}" /></h2>
-                        <c:choose>
-                            <c:when test="${not empty mota }">
-                                <c:forEach items="${mota}" var="valueMota" >
-                                    <c:out value="${valueMota}" /><br>
-                                </c:forEach>
-                            </c:when>
-                            <c:otherwise>
-                                <p><c:out value="${menu.description}" /></p>
-                            </c:otherwise>
-                        </c:choose>
-                        <button type="button" class="btn btn-brand popup-with-zoom-anim" data-popup="inline"
-                                href="#popup-reservations-form" data-bb-track="button"
-                                data-bb-track-on="click" data-bb-track-category="Reservations Trigger Button"
-                                data-bb-track-action="Click" data-bb-track-label="Multi Button">Reservations</button>
+                <div class="c-split__col ">
+                    <div class="c-split__col-inner">
+                        <div class="c-split__content content">
+                            <h2 id="bookmenu" class="h2 c-split__heading"><c:out value="${menu.title}" /></h2>
+                            <c:choose>
+                                <c:when test="${not empty mota }">
+                                    <c:forEach items="${mota}" var="valueMota" >
+                                        <c:out value="${valueMota}" /><br>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <p><c:out value="${menu.description}" /></p>
+                                </c:otherwise>
+                            </c:choose>
+                            <button type="button" class="btn btn-brand popup-with-zoom-anim" data-popup="inline"
+                                    href="#popup-reservations-form" data-bb-track="button"
+                                    data-bb-track-on="click" data-bb-track-category="Reservations Trigger Button"
+                                    data-bb-track-action="Click" data-bb-track-label="Multi Button">Reservations</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         </c:forEach>
+
+
         <section class="c-split c-split--vcenter revealable">
             <div class="c-split__col c-split__col--empty">
                 <div class="c-split__col-inner">
@@ -167,7 +164,7 @@
             <div class="c-split__col ">
                 <div class="c-split__col-inner">
                     <div class="c-split__content content">
-                        <h2 id="bookmenu" class="h2 c-split__heading">Book a table</h2>
+                        <h2 class="h2 c-split__heading">Trứng chiên</h2>
                         <p>Nguyên liệu</p>
                         <p>Trứng gà 6 quả
                             (trứng gà công nghiệp với trọng lượng 1 quả từ 57 - 62gr cả vỏ)</p>
@@ -191,6 +188,8 @@
                 </div>
             </div>
         </section>
+        <label id="celebrate" class="category-label">Celebrate</label>
+
         <section class="c-split c-split--vcenter revealable">
             <div class="c-split__col c-split__col--empty">
                 <div class="c-split__col-inner">
@@ -202,13 +201,14 @@
             <div class="c-split__col ">
                 <div class="c-split__col-inner">
                     <div class="c-split__content content">
-                        <h2 id="celebrate" class="h2 c-split__heading">Celebrate</h2>
+                        <h2 class="h2 c-split__heading">Celebrate</h2>
                         <p>Schedule your next event at Caffe Dante.</p>
-                        <a href="#" class="btn btn-brand">Inquire Within</a>
+                        <a href="/celebrate" class="btn btn-brand">Inquire Within</a>
                     </div>
                 </div>
             </div>
         </section>
+        <label id="trangmieng" class="category-label">Món tráng miệng</label>
         <section class="c-split c-split--vcenter revealable">
             <div class="c-split__col c-split__col--empty">
                 <div class="c-split__col-inner">
@@ -223,7 +223,7 @@
                         <h2 class="h2 c-split__heading">Shop</h2>
                         <section id=”target-element”>Target Element Content</section>
                         <p>Purchase our merchandise online. </p>
-                        <a href="#" class="btn btn-brand">View Products</a>
+                        <a href="/store" class="btn btn-brand">View Products</a>
                     </div>
                 </div>
             </div>
@@ -233,7 +233,7 @@
             <div class="container">
                 <h2 class="h1">Food & Drink</h2>
                 <p>Click below to see what we&#39;re serving. </p>
-                <a href="#" class="btn btn-brand">View Menus</a>
+                <a href="/menus" class="btn btn-brand">View Menus</a>
             </div>
         </section>
     </main>
@@ -246,7 +246,7 @@
                     <li><a href="https://www.facebook.com/dantenewyorkcity" target="_blank" rel="noopener"
                            data-bb-track="button" data-bb-track-on="click" data-bb-track-category="Social Icons"
                            data-bb-track-action="Click" data-bb-track-label="Facebook, Footer"><span
-                            class="fa fa-facebook" aria-hidden="true"></span><span
+                            class="fa fa-facebook-f" aria-hidden="true"></span><span
                             class="sr-only">Facebook</span></a></li>
                     <li><a href="https://www.instagram.com/dantenewyorkcity/" target="_blank" rel="noopener"
                            data-bb-track="button" data-bb-track-on="click" data-bb-track-category="Social Icons"
