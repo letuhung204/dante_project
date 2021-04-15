@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -121,9 +122,16 @@
         </section>
 
         <c:forEach items="${listCatalogues}" var="catalogue" varStatus="s">
-            <spring:url
-                    value="category${catalogue.idCatalogue}" var="jumid" />
-        <label id="${jumid}" class="category-label"><c:out value="${catalogue.ten}" /></label>
+            <c:choose>
+                <c:when test="${fn:length(catalogue.menuList) == '0'}">
+                    <p></p>
+                </c:when>
+                <c:otherwise>
+                    <spring:url
+                            value="category${catalogue.idCatalogue}" var="jumid" />
+                    <label id="${jumid}" class="category-label"><c:out value="${catalogue.ten}" /></label>
+                </c:otherwise>
+            </c:choose>
 
         <c:forEach items="${catalogue.menuList}" var="menu" varStatus="c">
             <section class="c-split c-split--vcenter revealable">
@@ -148,89 +156,14 @@
                                     <p><c:out value="${menu.description}" /></p>
                                 </c:otherwise>
                             </c:choose>
-                            <h3 style="margin-top: 40px">Giá Item: <c:out value="${menu.price}" />,000 VND</h3>
+                            <h3 style="margin-top: 40px">Giá Item: <c:out value="${menu.price}" />,000 VNĐ</h3>
                         </div>
                     </div>
                 </div>
             </section>
         </c:forEach>
         </c:forEach>
-        <label id="celebrate2" class="category-label">Trứng chiên</label>
-        <section class="c-split c-split--vcenter revealable">
-            <div class="c-split__col c-split__col--empty">
-                <div class="c-split__col-inner">
-                    <div class="c-split__image" role="img" aria-label="Dante Negroni over Menu"
-                         style="background-image: url('https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/20100NEGRONI_SESSIONS.jpg?fit=max&w=1800&auto=format,compress');">
-                    </div>
-                </div>
-            </div>
-            <div class="c-split__col ">
-                <div class="c-split__col-inner">
-                    <div class="c-split__content content">
-                        <h2 class="h2 c-split__heading">Trứng chiên</h2>
-                        <p>Nguyên liệu</p>
-                        <p>Trứng gà 6 quả
-                            (trứng gà công nghiệp với trọng lượng 1 quả từ 57 - 62gr cả vỏ)</p>
-                        <p>Bột mì đa dụng 100 gr</p>
-                        <p>Tinh bột bắp 20 gr
-                            (corn starch)</p>
-                        <p>TĐường 100 gr</p>
-                        <p>TMuối 2 gr</p>
-                        <p>TSữa tươi không đường 60 ml</p>
-                        <p>TDầu ăn 60 ml</p>
-                        <p>TTinh chất vani 1/2 thìa cà phê
-                            (3ml)</p>
-                        <p>TNước cốt canh 2 ml
-                            (khoảng 5 - 6 giọt)</p>
 
-                        <button type="button" class="btn btn-brand popup-with-zoom-anim" data-popup="inline"
-                                href="#popup-reservations-form" data-bb-track="button"
-                                data-bb-track-on="click" data-bb-track-category="Reservations Trigger Button"
-                                data-bb-track-action="Click" data-bb-track-label="Multi Button">Reservations</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <label id="celebrate" class="category-label">Celebrate</label>
-
-        <section class="c-split c-split--vcenter revealable">
-            <div class="c-split__col c-split__col--empty">
-                <div class="c-split__col-inner">
-                    <div class="c-split__image" role="img" aria-label="a cake sitting on top of a table"
-                         style="background-image: url('https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/94459ROSE_PETAL.jpg?fit=max&w=1800&auto=format,compress');">
-                    </div>
-                </div>
-            </div>
-            <div class="c-split__col ">
-                <div class="c-split__col-inner">
-                    <div class="c-split__content content">
-                        <h2 class="h2 c-split__heading">Celebrate</h2>
-                        <p>Schedule your next event at Caffe Dante.</p>
-                        <a href="/celebrate" class="btn btn-brand">Inquire Within</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <label id="trangmieng" class="category-label">Món tráng miệng</label>
-        <section class="c-split c-split--vcenter revealable">
-            <div class="c-split__col c-split__col--empty">
-                <div class="c-split__col-inner">
-                    <div class="c-split__image" alt=""
-                         style="background-image: url('https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/98217NEGRONI_BIANCO.jpg?fit=max&w=1800&auto=format,compress');">
-                    </div>
-                </div>
-            </div>
-            <div class="c-split__col ">
-                <div class="c-split__col-inner">
-                    <div class="c-split__content content">
-                        <h2 class="h2 c-split__heading">Shop</h2>
-                        <section id=”target-element”>Target Element Content</section>
-                        <p>Purchase our merchandise online. </p>
-                        <a href="/store" class="btn btn-brand">View Products</a>
-                    </div>
-                </div>
-            </div>
-        </section>
         <section class="c-tout-overlay c-tout-overlay--dimmed revealable"
                  style="background-image: url('https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/57814S_Freihon_190703_0114_A.jpg?fit=max&w=1800&auto=format,compress');">
             <div class="container">

@@ -29,11 +29,14 @@ a:focus, button:focus, .btn:focus, .btn.active:focus, .arrow-btn:focus, .site-na
 a.scroll_to {
     flex-grow: 1;
     width: 33%;
-    height: 100px;
+    height: auto;
+    margin-bottom: 10px;
 }
 .catalogue-menu {
     display: flex;
     flex-wrap: wrap;
+    font-size: 1.1rem;
+    margin-top: 10px;
 }
 .center {
     text-align: center !important;
@@ -6395,7 +6398,7 @@ p img {
     display: none !important;
 }
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Catorze 27 Medium";
+    font-family: "Resamitz";
     font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
@@ -6407,7 +6410,7 @@ h1, .h1 {
     letter-spacing: 1px;
 }
 h2, .h2 {
-    font-family: "Catorze 27 Medium";
+    font-family: "Resamitz";
     color: #f4eadb;
     font-weight: 300;
     text-transform: uppercase;
@@ -6415,7 +6418,7 @@ h2, .h2 {
     font-size: 2rem;
 }
 h3, .h3 {
-    font-family: "Catorze 27 Medium";
+    font-family: "Resamitz";
     color: #f4eadb;
     font-weight: 300;
     text-transform: uppercase;
