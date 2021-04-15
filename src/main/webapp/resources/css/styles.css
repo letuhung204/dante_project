@@ -10194,6 +10194,10 @@ main {
     transform: rotate(0deg);
     transition: all 0.35s;
 }
+
+.c-split__price{
+    margin-top: 30px;
+}
 .c-split__col:not(.c-split__col--empty):hover .c-split__heading:after {
     transform: rotate(-25deg);
 }

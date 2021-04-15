@@ -109,7 +109,9 @@
                     <h2>Category</h2>
                     <div class="catalogue-menu">
                         <c:forEach items="${listCatalogues}" var="catalogue" varStatus="s">
-                            <a href="#" class="scroll_to"><c:out value="${catalogue.ten}" /></a>
+                            <spring:url
+                                    value="#category${catalogue.idCatalogue}" var="jumid" />
+                            <a href="${jumid}" class="scroll_to"><c:out value="${catalogue.ten}" /></a>
 
                         </c:forEach>
 
@@ -117,9 +119,13 @@
                 </div>
             </div>
         </section>
-        <label id="bookmenu" class="category-label">Book a table</label>
 
-        <c:forEach items="${listMenu}" var="menu" varStatus="s">
+        <c:forEach items="${listCatalogues}" var="catalogue" varStatus="s">
+            <spring:url
+                    value="category${catalogue.idCatalogue}" var="jumid" />
+        <label id="${jumid}" class="category-label"><c:out value="${catalogue.ten}" /></label>
+
+        <c:forEach items="${catalogue.menuList}" var="menu" varStatus="c">
             <section class="c-split c-split--vcenter revealable">
                 <div class="c-split__col c-split__col--empty">
                     <div class="c-split__col-inner">
@@ -133,8 +139,8 @@
                         <div class="c-split__content content">
                             <h2 id="bookmenu" class="h2 c-split__heading"><c:out value="${menu.title}" /></h2>
                             <c:choose>
-                                <c:when test="${not empty mota }">
-                                    <c:forEach items="${mota}" var="valueMota" >
+                                <c:when test="${not empty menu.mota }">
+                                    <c:forEach items="${menu.mota}" var="valueMota" >
                                         <c:out value="${valueMota}" /><br>
                                     </c:forEach>
                                 </c:when>
@@ -142,17 +148,14 @@
                                     <p><c:out value="${menu.description}" /></p>
                                 </c:otherwise>
                             </c:choose>
-                            <button type="button" class="btn btn-brand popup-with-zoom-anim" data-popup="inline"
-                                    href="#popup-reservations-form" data-bb-track="button"
-                                    data-bb-track-on="click" data-bb-track-category="Reservations Trigger Button"
-                                    data-bb-track-action="Click" data-bb-track-label="Multi Button">Reservations</button>
+                            <h3 style="margin-top: 40px">Giá Item: <c:out value="${menu.price}" />,000 VND</h3>
                         </div>
                     </div>
                 </div>
             </section>
         </c:forEach>
-
-
+        </c:forEach>
+        <label id="celebrate2" class="category-label">Trứng chiên</label>
         <section class="c-split c-split--vcenter revealable">
             <div class="c-split__col c-split__col--empty">
                 <div class="c-split__col-inner">

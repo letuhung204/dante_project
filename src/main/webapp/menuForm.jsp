@@ -384,7 +384,7 @@
                                                             <span class="input-group-addon"><i
                                                                     class="glyphicon glyphicon-list-alt"></i></span>
                                                 <form:input path="price" id="price"
-                                                            placeholder="nhập giá món dạng số" class="form-control"
+                                                            placeholder="nhập giá món dạng số, đơn vị 1000.Ví dụ giá món 100 ngàn (bạn sẽ nhập là: 100)" class="form-control"
                                                             required="true" type="text"></form:input>
                                             </div>
                                         </div>

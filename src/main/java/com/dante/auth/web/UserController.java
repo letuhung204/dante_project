@@ -96,14 +96,24 @@ public class UserController {
 
     @GetMapping({ "/"})
     public String home(Model model) {
-        List<Menu> listMenu = new ArrayList<>();
-        listMenu = menuRepo.findAll();
-        for (Menu menu:listMenu) {
-            String[] mota = menu.getDescription().split("\\r?\\n");
-            model.addAttribute("mota", mota);
+
+        List<Catalogue> listCatalogues = categoryRepo.findAll();
+        for (Catalogue catalogue:listCatalogues) {
+            List<Menu> listMenu = new ArrayList<>();
+            List<CatagoryMenu> catagoryMenu = categoryMenuRepo.listItemCategory(catalogue.getIdCatalogue());
+            for (CatagoryMenu catagoryMenu1: catagoryMenu) {
+                Menu menu = menuRepo.getOne(catagoryMenu1.getIdMenu());
+                listMenu.add(menu);
+            }
+            for (Menu menu:listMenu) {
+                String[] mota = menu.getDescription().split("\\r?\\n");
+                menu.setMota(mota);
+            }
+            catalogue.setMenuList(listMenu);
         }
-        model.addAttribute("listCatalogues",categoryRepo.findAll());
-        model.addAttribute("listMenu", listMenu);
+
+        model.addAttribute("listCatalogues",listCatalogues);
+//        model.addAttribute("listMenu", listMenu);
         return "home";
     }
 
@@ -159,7 +169,6 @@ public class UserController {
         listMenu = menuRepo.findAll();
         for (Menu menu:listMenu) {
             String[] mota = menu.getDescription().split("\\r?\\n");
-            model.addAttribute("mota", mota);
 
             CatagoryMenu catagoryMenu = categoryMenuRepo.itemCategory(menu.getId());
             if(catagoryMenu != null){
@@ -168,6 +177,7 @@ public class UserController {
                     menu.setCategory(catalogue.getTen());
                 }
             }
+            menu.setMota(mota);
         }
         model.addAttribute("listMenu", listMenu);
         return "menuList";

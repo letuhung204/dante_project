@@ -20,6 +20,16 @@ public class Menu {
     private String category;
     @Column
     private int price;
+    @Transient
+    private String[] mota;
+
+    public String[] getMota() {
+        return mota;
+    }
+
+    public void setMota(String[] mota) {
+        this.mota = mota;
+    }
 
     public int getPrice() {
         return price;
