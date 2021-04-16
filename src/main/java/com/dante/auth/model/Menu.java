@@ -19,7 +19,7 @@ public class Menu {
     @Column(nullable = true)
     private String category;
     @Column
-    private int price;
+    private String price;
     @Transient
     private String[] mota;
 
@@ -31,11 +31,11 @@ public class Menu {
         this.mota = mota;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

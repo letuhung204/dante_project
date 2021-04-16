@@ -340,7 +340,7 @@
                                         </c:choose>
                                         <td><img src="/user-photos/${menu.photos}" class="img-circle" alt="User Image" width="150px" height="100px"></td>
                                         <td><c:out value="${menu.category}"></c:out> </td>
-                                        <td><c:out value="${menu.price}"></c:out>,000 VNĐ</td>
+                                        <td><c:out value="${menu.price}"></c:out></td>
                                         <td>
                                             <div style="margin-left: 5px;width: 40%;float: left;">
                                                 <spring:url

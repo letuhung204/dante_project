@@ -151,7 +151,7 @@
                                     <p><c:out value="${menu.description}" /></p>
                                 </c:otherwise>
                             </c:choose>
-                            <h3 style="margin-top: 40px">Giá Item: <c:out value="${menu.price}" />,000 VNĐ</h3>
+                            <h3 style="margin-top: 40px">Giá Item: <c:out value="${menu.price}" /></h3>
                         </div>
                     </div>
                 </div>

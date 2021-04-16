@@ -119,7 +119,7 @@ public class UserController {
 
     @PostMapping("/save/menu")
     public RedirectView saveMenu(@RequestParam("photos") MultipartFile multipartFile, @RequestParam("title") String title,@RequestParam(value = "id",required = false) Integer id,
-                                 @RequestParam("description") String description, @RequestParam("idCatalogue") int catelogueId,@RequestParam(value = "price",required = false) int price) throws IOException {
+                                 @RequestParam("description") String description, @RequestParam("idCatalogue") int catelogueId,@RequestParam(value = "price",required = false) String price) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         Menu menu ;
         CatagoryMenu catagoryMenu;

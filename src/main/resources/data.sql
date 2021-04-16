@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS menu
     title       VARCHAR(500),
     description VARCHAR(20500),
     category    VARCHAR(500),
-    price       int,
+    price       VARCHAR(500),
     photos      VARCHAR(500)
 );
 
@@ -41,3 +41,38 @@ INSERT INTO catalogue (ten, chitiet)
 VALUES ('Combo', 'mo ta Combo category'),
        ('Signature','mo ta Signature category'),
     ('Classic','mo ta Classic category');
+    INSERT INTO menu (id,title, `description`,photos,price)
+VALUES (1,'Bombay Sapphire Combo', 'Combo','BombaySapphireCombo','1.600.000'),
+		(2,'Jose Cuervo Tequila', 'Combo','JoseCuervoTequila','1.550.000'),
+        (3,'Barcadi Gold Rum Combo', 'Combo','BarcadiGoldRumCombo','1.550.000'),
+        (4,'Captain Morgan Rum Combo', 'Combo','CaptainMorganRumCombo','1.550.000'),
+        (5,'Jack Daniels Combo', 'Combo','JackDanielsCombo','1.750.000'),
+         (6,'Jimbeam White Combo', 'Combo','JimbeamWhiteCombo','1.450.000'),
+          (7,'Attack on Pearl Harbor', 'Whisky,Sesame,Passion,Tamarind','AttackonPearlHarbor','230.000'),
+           (8,'Ocean Heart', 'Gin,Alovera,Honey','OceanHeart','230.000'),
+            (9,'The Habour Sunrise', 'Tequila,Watermelon,Basil,Grenadine','TheHabourSunrise','250.000'),
+             (10,'Just a Kiss', 'Bourbon,Gin,Banana Liquor,Mamalade','JustaKiss','220.000'),
+              (11,'Green Muse', 'Bourbon,Bailey,Hazenut,Matcha,Mlik','GreenMuse','190.000'),
+               (12,'Bermuda Triangle', 'Seaweed Bourbon,Smoky Whisky,Bitter','BermudaTriangle','210.000'),
+               (13,'Port Royal', 'Gin,Campari,Vermouth,Licorine,O Mai','PortRoyal','195.000'),
+               (14,'Foundtain of Youth', 'Rum,Basil,Pine Apple,Lime,Honey','FoundtainofYouth','185.000'),
+                (15,'The Flying Dutch Man', 'Tequila,Tomato,Cinnamon,Lemon,Tabasco','TheFlyingDutchMan','185.000'),
+                (16,'Calypso', 'Gin,Hibicus Cordial,Honey Ginger,Egg White','Calypso','165.000');
+
+INSERT INTO catagory_menu (id_catagory,id_menu)
+ VALUES (1,1),
+		(1,2),
+        (1,3),
+        (1,4),
+        (1,5),
+        (1,6),
+        (2,7),
+        (2,8),
+        (2,9),
+        (2,10),
+        (2,11),
+        (2,12),
+        (2,13),
+		(2,14),
+        (2,15),
+        (2,16);
