@@ -37,3 +37,7 @@ CREATE TABLE IF NOT EXISTS catalogue
 );
 INSERT INTO `user` (username, password)
 VALUES ('admin-dante','$2a$10$KSX3/ZmYSK6udsTFRow1a.neW/k/UY5iVvx2w6iB.UhXDOnMQhNoa');
+INSERT INTO catalogue (ten, chitiet)
+VALUES ('Combo', 'mo ta Combo category'),
+       ('Signature','mo ta Signature category'),
+    ('Classic','mo ta Classic category');

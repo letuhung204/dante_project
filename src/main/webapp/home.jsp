@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home | Dante NYC</title>
+    <title>THE HABOUR COCKTAIL-LOUNGE</title>
     <meta name="Revisit-After" content="5 Days">
     <meta name="Distribution" content="Global">
     <link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css" />
@@ -48,7 +48,7 @@
                             <a class="site-nav-link " href="#">Welcome</a>
                         </li>
                         <li>
-                            <a class="site-nav-link   " href="#">TO-GO · CAFFE DANTE</a>
+                            <a class="site-nav-link   " href="#">TO-GO · The Habour Cocktail-Lounge</a>
                         </li>
                     </ul>
                 </nav>
@@ -63,9 +63,8 @@
         <section id="hero" class="hero hero--gallery hero--fullheight revealable">
             <div class="hero__content container">
                 <p><br></p>
-                <p><img src="https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/18365dante-cream.png?w=1000&fit=max&auto=compress,format&h=1000"
-                        data-alt_text="a close up of a sign" class="fr-fic fr-dib hero-logo"
-                        alt="a close up of a sign" style="width: 195px;"></p>
+                <p><img src="${contextPath}/resources/imgs/logo/The Habour_logo_white-05.png" data-alt_text="a close up of a sign"
+                        class="fr-fic fr-dib hero-logo" alt="a close up of a sign" style="width: 595px;"></p>
                 <p><br></p>
                 <p><br></p>
                 <p><br></p>
@@ -85,21 +84,17 @@
                 <div>
                     <div class="gallery__item gallery__item-enhancement">
                         <picture>
-                            <source media="(max-width: 559px)" sizes="100vw"
-                                    srcset="https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/37253OLD_FASHIONED_WHISKEY_COCKTAIL.jpg?w=1000&fit=max&auto=compress,format 1000w">
+                            <source media="(max-width: 559px)" sizes="100vw" srcset="${contextPath}/resources/imgs/bg/_MG_9796.jpg">
                             <source media="(min-width: 560px) and (max-width: 767px)" sizes="100vw"
-                                    srcset="https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/37253OLD_FASHIONED_WHISKEY_COCKTAIL.jpg?w=1200&fit=max&auto=compress,format 1200w">
+                                    srcset="${contextPath}/resources/imgs/bg/_MG_9796.jpg">
                             <source media="(min-width: 767px) and (max-width: 1024px)" sizes="100vw"
-                                    srcset="https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/37253OLD_FASHIONED_WHISKEY_COCKTAIL.jpg?w=1400&fit=max&auto=compress,format 1400w">
-                            <source media="(min-width: 1024px)" sizes="100vw"
-                                    srcset="https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/37253OLD_FASHIONED_WHISKEY_COCKTAIL.jpg?w=1800&fit=max&auto=compress,format 1800w">
-                            <img src="https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/37253OLD_FASHIONED_WHISKEY_COCKTAIL.jpg?fit=max&w=1800&auto=format,compress"
-                                 alt="Dante's Old Fashioned over the menu">
+                                    srcset="${contextPath}/resources/imgs/bg/_MG_9796.jpg">
+                            <source media="(min-width: 1024px)" sizes="100vw" srcset="${contextPath}/resources/imgs/bg/_MG_9796.jpg">
+                            <img src="${contextPath}/resources/imgs/bg/_MG_9796.jpg" alt="The Habour Cocktail-Lounge">
                         </picture>
                     </div>
-                    <div class="gallery__item gallery__item-fallback"
-                         data-src="https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/37253OLD_FASHIONED_WHISKEY_COCKTAIL.jpg?fit=max&w=1800&auto=format,compress">
-                        <img class="sr-only" alt="Dante's Old Fashioned over the menu">
+                    <div class="gallery__item gallery__item-fallback" data-src="${contextPath}/resources/imgs/bg/_MG_9796.jpg">
+                        <img class="sr-only" alt="The Habour Cocktail-Lounge">
                     </div>
                 </div>
             </div>
@@ -165,11 +160,10 @@
         </c:forEach>
 
         <section class="c-tout-overlay c-tout-overlay--dimmed revealable"
-                 style="background-image: url('https://images.getbento.com/accounts/e8eee6aef7c2e8242e267a82a199ac35/media/images/57814S_Freihon_190703_0114_A.jpg?fit=max&w=1800&auto=format,compress');">
+                 style="background-image: url('${contextPath}/resources/imgs/bg/_MG_9826.jpg');">
             <div class="container">
-                <h2 class="h1">Food & Drink</h2>
-                <p>Click below to see what we&#39;re serving. </p>
-                <a href="/menus" class="btn btn-brand">View Menus</a>
+                <h2 class="h1">Thank You For Your Visiting</h2>
+                <p>Hope to see you again</p>
             </div>
         </section>
     </main>
@@ -179,17 +173,17 @@
         <div class="site-footer-desktop-primary" data-footer-sticky>
             <div class="site-footer-desktop-primary__container container">
                 <ul class="social-accounts">
-                    <li><a href="https://www.facebook.com/dantenewyorkcity" target="_blank" rel="noopener"
+                    <li><a href="https://www.facebook.com/TheHabourCocktail/" target="_blank" rel="noopener"
                            data-bb-track="button" data-bb-track-on="click" data-bb-track-category="Social Icons"
                            data-bb-track-action="Click" data-bb-track-label="Facebook, Footer"><span
                             class="fa fa-facebook-f" aria-hidden="true"></span><span
                             class="sr-only">Facebook</span></a></li>
-                    <li><a href="https://www.instagram.com/dantenewyorkcity/" target="_blank" rel="noopener"
+                    <li><a href="#" target="_blank" rel="noopener"
                            data-bb-track="button" data-bb-track-on="click" data-bb-track-category="Social Icons"
                            data-bb-track-action="Click" data-bb-track-label="Instagram, Footer"><span
                             class="fa fa-instagram" aria-hidden="true"></span><span
                             class="sr-only">Instagram</span></a></li>
-                    <li><a href="https://open.spotify.com/playlist/04PcJHvCBlIiwOlzex4Dxw" target="_blank"
+                    <li><a href="#" target="_blank"
                            rel="noopener" data-bb-track="button" data-bb-track-on="click"
                            data-bb-track-category="Social Icons" data-bb-track-action="Click"
                            data-bb-track-label="spotify, Footer"><span class="fa fa-spotify"
@@ -198,26 +192,14 @@
                 <nav class="site-nav">
                     <ul class="site-nav-menu">
                         <li>
-                            <a class="site-nav-link" href="https://goo.gl/maps/jC281D5SdiYbPv3u8" target="_blank"
-                               rel="noopener">79-81 Macdougal St, New York</a>
+                            <a class="site-nav-link" href="https://goo.gl/maps/wguUB7TSATEfXrk68" target="_blank"
+                               rel="noopener">22 Khu Tập Thể Lâm Tường ,Tô Hiệu ,Hải Phòng</a>
                         </li>
                         <li>
                             <a class="site-nav-link" href="tel:212-982-5275">(212) 982-5275</a>
                         </li>
                         <li>
-                            <a class="site-nav-link" href="/our-story/">Our Story</a>
-                        </li>
-                        <li>
-                            <a class="site-nav-link" href="/work-with-us/">Work With Us</a>
-                        </li>
-                        <li>
-                            <a class="site-nav-link" href="/contact/">Contact</a>
-                        </li>
-                        <li>
-                            <a class="site-nav-link" href="/location/dante-nyc/">Hours & Locations</a>
-                        </li>
-                        <li>
-                            <a class="site-nav-link" href="/reservations/">Reservations</a>
+                            <a class="site-nav-link" href=" ">Contact Us</a>
                         </li>
                     </ul>
                 </nav>
@@ -231,111 +213,6 @@
         </div>
     </div>
 </footer>
-<div id="popup-reservations-form" class="popup popup--form mfp-hide">
-    <form class="reservations-form form-alt container-sm">
-        <div data-bb-track="form" data-bb-track-on="submit" data-bb-track-category="Forms"
-             data-bb-track-action="Submit" data-bb-track-label="Reservations" aria-hidden="true"></div>
-        <div class="form-header">
-            <h2 class="h1 form-heading">Reservations</h2>
-        </div>
-        <div class="form-ui">
-            <label for="location" class="input--hidden">
-                <i class="error-label"></i>
-                <span class="input-label">Location</span>
-                <div class="form-control-group has-icon-right">
-                    <select id="location" class="form-control unselected" name="location" required
-                            aria-describedby="location-error">
-                        <option value="" disabled>Location</option>
-                        <option value="site" selected data-reservation-service="resy" data-reservation-id="1290"
-                                data-reservation-api-key>Dante NYC | Italian Small Plates & Cocktails in New York City
-                        </option>
-                    </select>
-                    <span class="form-control-group--icon is-positioned-right" aria-hidden="true">
-                            <i class="fa fa-chevron-down"></i>
-                        </span>
-                </div>
-            </label>
-            <label for="seats">
-                    <span class="input-label">Number of People <span class="input-label-optional">-
-                            Optional</span></span>
-                <div class="form-control-group has-icon-right">
-                    <select id="seats" class="form-control unselected" name="seats">
-                        <option value="" selected disabled>Number of People</option>
-                        <option value="1">1 Person</option>
-                        <option value="2">2 People</option>
-                        <option value="3">3 People</option>
-                        <option value="4">4 People</option>
-                        <option value="5">5 People</option>
-                        <option value="6">6 People</option>
-                        <option value="7">7 People</option>
-                        <option value="8">8+ People</option>
-                    </select>
-                    <span class="form-control-group--icon is-positioned-right" aria-hidden="true">
-                            <i class="fa fa-chevron-down"></i>
-                        </span>
-                </div>
-            </label>
-            <label for="date">
-                <i class="error-label"></i>
-                <span class="input-label">Date</span>
-                <div data-react-component="accessible-date-picker"></div>
-            </label>
-            <label for="time">
-                <span class="input-label">Time <span class="input-label-optional">- Optional</span></span>
-                <div class="form-control-group has-icon-left has-icon-right">
-                        <span class="form-control-group--icon is-positioned-left" aria-hidden="true">
-                            <i class="fa fa-clock-o"></i>
-                        </span>
-                    <select id="time" class="form-control unselected" name="time">
-                        <option value="" selected disabled>Time</option>
-                        <option value="2300">11:00 PM</option>
-                        <option value="2230">10:30 PM</option>
-                        <option value="2200">10:00 PM</option>
-                        <option value="2130">9:30 PM</option>
-                        <option value="2100">9:00 PM</option>
-                        <option value="2030">8:30 PM</option>
-                        <option value="2000">8:00 PM</option>
-                        <option value="1930">7:30 PM</option>
-                        <option value="1900">7:00 PM</option>
-                        <option value="1830">6:30 PM</option>
-                        <option value="1800">6:00 PM</option>
-                        <option value="1730">5:30 PM</option>
-                        <option value="1700">5:00 PM</option>
-                        <option value="1630">4:30 PM</option>
-                        <option value="1600">4:00 PM</option>
-                        <option value="1530">3:30 PM</option>
-                        <option value="1500">3:00 PM</option>
-                        <option value="1430">2:30 PM</option>
-                        <option value="1400">2:00 PM</option>
-                        <option value="1330">1:30 PM</option>
-                        <option value="1300">1:00 PM</option>
-                        <option value="1230">12:30 PM</option>
-                        <option value="1200">12:00 PM</option>
-                        <option value="1130">11:30 AM</option>
-                        <option value="1100">11:00 AM</option>
-                        <option value="1030">10:30 AM</option>
-                        <option value="1000">10:00 AM</option>
-                        <option value="0930">9:30 AM</option>
-                        <option value="0900">9:00 AM</option>
-                        <option value="0830">8:30 AM</option>
-                        <option value="0800">8:00 AM</option>
-                        <option value="0730">7:30 AM</option>
-                        <option value="0700">7:00 AM</option>
-                    </select>
-                    <span class="form-control-group--icon is-positioned-right" aria-hidden="true">
-                            <i class="fa fa-chevron-down"></i>
-                        </span>
-                </div>
-            </label>
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn btn-brand-alt">Find A Table</button>
-            <span class="form-error-msg">Please check errors in the form above</span>
-        </div>
-        <div class="form-success-msg">
-            <span>Thanks!</span>
-        </div>
-    </form>
-</div>
 </body>
+
 </html>
